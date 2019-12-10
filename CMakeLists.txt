@@ -45,9 +45,9 @@ MARK_AS_ADVANCED ( CI_DIR )
 #####
 ###############################################################################
 SET (CMAKE_RELEASE_VERSION_MAJOR "5" )
-SET (CMAKE_RELEASE_VERSION_MINOR "3" )
-SET (CMAKE_RELEASE_VERSION_PATCH "7" )
-SET (CMAKE_RELEASE_DATE "Apr. 10, 2017" )
+SET (CMAKE_RELEASE_VERSION_MINOR "4" )
+SET (CMAKE_RELEASE_VERSION_PATCH "1" )
+SET (CMAKE_RELEASE_DATE "Mar. 20, 2019" )
 
 SET (CMAKE_RELEASE_VERSION
   "${CMAKE_RELEASE_VERSION_MAJOR}.${CMAKE_RELEASE_VERSION_MINOR}.${CMAKE_RELEASE_VERSION_PATCH}")
@@ -489,58 +489,58 @@ ENDIF ( BUILD_TESTING )
 #####         Create API Documentation
 #####
 ###############################################################################
-#FIND_PACKAGE(Doxygen)
-#IF(DOXYGEN_FOUND)
-#
-#  # MMG2D Documentation
-#  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg2d/Doxyfile.in
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg2d/Doxyfile @ONLY)
-#
-#  SET(MMG2DDOC_DIR ${PROJECT_BINARY_DIR}/doc/mmg2d)
-#  SET(MMGSDOC_DIR ${PROJECT_BINARY_DIR}/doc/mmgs)
-#  SET(MMG3DDOC_DIR ${PROJECT_BINARY_DIR}/doc/mmg3d)
-#
-#  FILE(MAKE_DIRECTORY ${MMG2DDOC_DIR})
-#  FILE(MAKE_DIRECTORY ${MMGSDOC_DIR})
-#  FILE(MAKE_DIRECTORY ${MMG3DDOC_DIR})
-#
-#  ADD_CUSTOM_TARGET(mmg2d_doc
-#    COMMAND ${DOXYGEN_EXECUTABLE}
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg2d/Doxyfile
-#    WORKING_DIRECTORY ${MMG2DDOC_DIR}
-#    COMMENT "Generating MMG2D API
-#    documentation with Doxygen.  Open up the
-#    ${MMG2DDOC_DIR}/html/index.html file to see
-#    it." VERBATIM )
-#
-#  # MMGS Documentation
-#  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmgs/Doxyfile.in
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmgs/Doxyfile @ONLY)
-#  ADD_CUSTOM_TARGET(mmgs_doc
-#    COMMAND ${DOXYGEN_EXECUTABLE}
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmgs/Doxyfile
-#    WORKING_DIRECTORY ${MMGSDOC_DIR}
-#    COMMENT "Generating MMGS API
-#    documentation with Doxygen.  Open up the
-#    ${MMGSDOC_DIR}/html/index.html file to see
-#    it." VERBATIM )
-#
-#  # MMG3D Documentation
-#  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/Doxyfile.in
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/Doxyfile @ONLY)
-#  ADD_CUSTOM_TARGET(mmg3d_doc
-#    COMMAND ${DOXYGEN_EXECUTABLE}
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/Doxyfile
-#    WORKING_DIRECTORY ${MMG3DDOC_DIR}
-#    COMMENT "Generating MMG3D API documentation with Doxygen. Open up the
-#    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/html/index.html file to see
-#    it" VERBATIM )
-#
-#  ADD_CUSTOM_TARGET(doc DEPENDS mmgs_doc mmg3d_doc mmg2d_doc COMMENT "Generating
-#    MMG API documentation with Doxygen.  Open up the
-#    ${PROJECT_BINARY_DIR}/doc/mmg*/html/index.html file to see it"
-#    VERBATIM )
-#ENDIF ( DOXYGEN_FOUND )
+FIND_PACKAGE(Doxygen)
+IF(DOXYGEN_FOUND)
+
+  # MMG2D Documentation
+  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg2d/Doxyfile.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg2d/Doxyfile @ONLY)
+
+  SET(MMG2DDOC_DIR ${PROJECT_BINARY_DIR}/doc/mmg2d)
+  SET(MMGSDOC_DIR ${PROJECT_BINARY_DIR}/doc/mmgs)
+  SET(MMG3DDOC_DIR ${PROJECT_BINARY_DIR}/doc/mmg3d)
+
+  FILE(MAKE_DIRECTORY ${MMG2DDOC_DIR})
+  FILE(MAKE_DIRECTORY ${MMGSDOC_DIR})
+  FILE(MAKE_DIRECTORY ${MMG3DDOC_DIR})
+
+  ADD_CUSTOM_TARGET(mmg2d_doc
+    COMMAND ${DOXYGEN_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg2d/Doxyfile
+    WORKING_DIRECTORY ${MMG2DDOC_DIR}
+    COMMENT "Generating MMG2D API
+    documentation with Doxygen.  Open up the
+    ${MMG2DDOC_DIR}/html/index.html file to see
+    it." VERBATIM )
+
+  # MMGS Documentation
+  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmgs/Doxyfile.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmgs/Doxyfile @ONLY)
+  ADD_CUSTOM_TARGET(mmgs_doc
+    COMMAND ${DOXYGEN_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmgs/Doxyfile
+    WORKING_DIRECTORY ${MMGSDOC_DIR}
+    COMMENT "Generating MMGS API
+    documentation with Doxygen.  Open up the
+    ${MMGSDOC_DIR}/html/index.html file to see
+    it." VERBATIM )
+
+  # MMG3D Documentation
+  CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/Doxyfile.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/Doxyfile @ONLY)
+  ADD_CUSTOM_TARGET(mmg3d_doc
+    COMMAND ${DOXYGEN_EXECUTABLE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/Doxyfile
+    WORKING_DIRECTORY ${MMG3DDOC_DIR}
+    COMMENT "Generating MMG3D API documentation with Doxygen. Open up the
+    ${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/mmg3d/html/index.html file to see
+    it" VERBATIM )
+
+  ADD_CUSTOM_TARGET(doc DEPENDS mmgs_doc mmg3d_doc mmg2d_doc COMMENT "Generating
+    MMG API documentation with Doxygen.  Open up the
+    ${PROJECT_BINARY_DIR}/doc/mmg*/html/index.html file to see it"
+    VERBATIM )
+ENDIF ( DOXYGEN_FOUND )
 
 ###############################################################################
 #####
